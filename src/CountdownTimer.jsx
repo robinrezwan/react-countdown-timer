@@ -41,35 +41,37 @@ function CountdownTimer({dateSince, dateUntil}) {
         setTimeout(updateDuration, 200);
     }
 
-    return (<div>
-        {(remainingTime && totalTime) ?
-            <div style={{display: "flex", gap: "20px", padding: "10px"}}>
-                <CircularProgress
-                    value={remainingTime.days}
-                    maxValue={totalTime.days}
-                    text={remainingTime.days}
-                    footerText="Days"
-                />
-                <CircularProgress
-                    value={remainingTime.hours}
-                    maxValue={60}
-                    text={remainingTime.hours}
-                    footerText="Hours"
-                />
-                <CircularProgress
-                    value={remainingTime.minutes}
-                    maxValue={60}
-                    text={remainingTime.minutes}
-                    footerText="Minutes"
-                />
-                <CircularProgress
-                    value={remainingTime.seconds}
-                    maxValue={60}
-                    text={remainingTime.seconds}
-                    footerText="Seconds"
-                />
-            </div> : null}
-    </div>);
+    return (
+        <div>
+            {(totalTime && remainingTime) ?
+                <div style={{display: "flex", gap: "20px", padding: "10px"}}>
+                    <CircularProgress
+                        value={remainingTime.days}
+                        maxValue={totalTime.days}
+                        text={remainingTime.days}
+                        footerText="Days"
+                    />
+                    <CircularProgress
+                        value={remainingTime.hours}
+                        maxValue={60}
+                        text={remainingTime.hours}
+                        footerText="Hours"
+                    />
+                    <CircularProgress
+                        value={remainingTime.minutes}
+                        maxValue={60}
+                        text={remainingTime.minutes}
+                        footerText="Minutes"
+                    />
+                    <CircularProgress
+                        value={remainingTime.seconds}
+                        maxValue={60}
+                        text={remainingTime.seconds}
+                        footerText="Seconds"
+                    />
+                </div> : null}
+        </div>
+    );
 }
 
 export default CountdownTimer;

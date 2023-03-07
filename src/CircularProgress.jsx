@@ -1,4 +1,3 @@
-import './App.css'
 import {buildStyles, CircularProgressbar} from "react-circular-progressbar";
 
 function CircularProgress(
@@ -39,7 +38,7 @@ function CircularProgress(
                     </p>
                 </div>
             </div>
-            <div>
+            <div style={{display: "flex", justifyContent: "center"}}>
                 <p style={{fontSize: "16px", margin: "0px"}}>
                     {footerText}
                 </p>
