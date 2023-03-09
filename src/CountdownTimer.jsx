@@ -21,7 +21,11 @@ function CountdownTimer({dateSince, dateUntil}) {
 
     function getDuration(dateSince, dateUntil) {
         // Get the time difference in milliseconds
-        const timeDiff = Math.abs(dateUntil.getTime() - dateSince.getTime());
+        const timeDiff = dateUntil.getTime() - dateSince.getTime();
+
+        if (timeDiff < 0) {
+            return {days: 0, hours: 0, minutes: 0, seconds: 0};
+        }
 
         // Convert the time difference to days, hours, minutes, and seconds
         const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
@@ -36,8 +40,8 @@ function CountdownTimer({dateSince, dateUntil}) {
 
     function updateDuration() {
         const dateNow = new Date();
-        const duration = getDuration(dateNow, dateUntil);
-        setRemainingTime(duration);
+        const remainingDuration = getDuration(dateNow, dateUntil);
+        setRemainingTime(remainingDuration);
         setTimeout(updateDuration, 200);
     }
 
@@ -53,7 +57,7 @@ function CountdownTimer({dateSince, dateUntil}) {
                     />
                     <CircularProgress
                         value={remainingTime.hours}
-                        maxValue={60}
+                        maxValue={24}
                         text={remainingTime.hours}
                         footerText="Hours"
                     />
